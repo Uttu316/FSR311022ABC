@@ -1,12 +1,16 @@
 import React from 'react'
 import './style.css'
-import List from './components/list/list'
+import MyList from './components/list/list'
+import MyCounter from './components/counter'
+import ClassCounter from './components/counter/classCounter'
 
 function App () {
   return (
     <div>
       <h1>Hello, React</h1>
-      <List />
+      <MyList />
+      {/* <MyCounter /> */}
+      <ClassCounter title='Class Counter' />
     </div>
   )
 }
