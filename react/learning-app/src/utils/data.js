@@ -480,3 +480,76 @@ export const users = [
       'pharetra et lorem massa rutrum lorem lacus ac magna sit turpis vitae elementum curabitur in dolor amet suspendisse nec porttitor dui orci eros sagittis nec magna lorem adipiscing odio sit sollicitudin tortor'
   }
 ]
+
+export const filters = [
+  {
+    id: 1,
+    name: 'All'
+  },
+  {
+    id: 2,
+    name: 'Aritifcial Intelligence'
+  },
+  {
+    id: 3,
+    name: 'Machine Learning'
+  },
+  {
+    id: 4,
+    name: 'IOT'
+  }
+]
+
+/*
+
+filters.map((item)=>(
+  <button onClick={()=>onFilter(item)} key={item.id}>{item.name}</button>
+))
+
+*/
+
+const cards = [
+  {
+    categoryId: 2,
+    autor: 'Utkarsh Gupta',
+    date: '05 jul 2019',
+    thumbnail: 'https://someurlofImage.com',
+    heading: 'A heading for card',
+    description:
+      'cdhauiehcbewiyrewiohcrueyroiawe hrauchioewhruoa aeariuewirhewr'
+  },
+  {
+    categoryId: 3,
+    autor: 'Utkarsh Gupta',
+    date: '05 jul 2019',
+    thumbnail: 'https://someurlofImage.com',
+    heading: 'A heading for card',
+    description:
+      'cdhauiehcbewiyrewiohcrueyroiawe hrauchioewhruoa aeariuewirhewr'
+  },
+  {
+    categoryId: 4,
+    autor: 'Utkarsh Gupta',
+    date: '05 jul 2019',
+    thumbnail: 'https://someurlofImage.com',
+    heading: 'A heading for card',
+    description:
+      'cdhauiehcbewiyrewiohcrueyroiawe hrauchioewhruoa aeariuewirhewr'
+  },
+  {
+    categoryId: 3,
+    autor: 'Utkarsh Gupta',
+    date: '05 jul 2019',
+    thumbnail: 'https://someurlofImage.com',
+    heading: 'A heading for card',
+    description:
+      'cdhauiehcbewiyrewiohcrueyroiawe hrauchioewhruoa aeariuewirhewr'
+  }
+]
+
+/*
+if(item.id===1)
+  set all cards
+else
+  do filtering for item.id  
+*/
