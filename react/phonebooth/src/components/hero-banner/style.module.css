@@ -1,0 +1,31 @@
+
+.heroBanner{
+    width: 100%;
+    height: 500px;
+    position: relative;
+}
+.heroBannerBg{
+    height: 500px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: -1;
+}
+.heroBannerContent{
+    margin-left: 40px;
+    padding-top: 100px;
+}
+.heroBanner h1{
+    color: white;
+    margin-bottom: 10px;
+    font-size: 40px;
+    
+}
+
+.heroBanner p{
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 10px;
+    max-width: 50%;
+}

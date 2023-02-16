@@ -45,7 +45,7 @@ export default UsersList;
 
 /*
 useEffect -> componentDidMount->[]
-useEffect -> componentDidUpdate->[dependency]
+useEffect -> componentDidUpdate->[dependency1,dependency2]
 useEffect -> componentWillunMount->[]+return ()=>{}
 
 
