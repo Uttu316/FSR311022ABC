@@ -7,9 +7,11 @@ import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
-import { validateForm } from '../../utils/validation'
-import { Link } from 'react-router-dom'
+import { validateForm } from '../../utils/validations'
+import { Link, useNavigate } from 'react-router-dom'
 import { TextField } from '@mui/material'
+import { signUp } from '../../services/auth'
+import * as LocalStorage from "../../utils/localstorage";
 
 const initalValues = {
   email: '',
@@ -17,22 +19,39 @@ const initalValues = {
   confirmPassword: ''
 }
 const Signup = () => {
+  const navigate = useNavigate()
   const [values, setValues] = useState(initalValues)
   const [errors, setErrors] = useState(initalValues)
 
   const onInputChange = e => {
     const { name, value } = e.target
-    /* const newValues = { ...values };
-    newValues[name] = value;
-     setValues(newValues); */
+    // const newValues = { ...values }
+    // newValues[name] = value
+    // setValues(newValues)
     setValues(state => ({ ...state, [name]: value }))
+    // const { errors } = validateForm(newValues)
+    // setErrors(errors)
   }
 
-  const handleSubmit = event => {
+  const handleSubmit = async event => {
     event.preventDefault()
     const { isValid, errors } = validateForm(values)
     setErrors(errors)
     if (isValid) {
+      const data = {
+        email: values.email,
+        password: values.password
+      }
+      signUp(data)
+        .then(res => {
+          LocalStorage.setLSValue('user',res)
+          navigate('/dashboard',{
+            replace:true
+          })
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 
@@ -78,6 +97,8 @@ const Signup = () => {
           >
             <TextField
               label='Email Address'
+              fullWidth
+              margin='normal'
               name='email'
               type='email'
               onChange={onInputChange}
@@ -89,7 +110,10 @@ const Signup = () => {
               name='password'
               label='Password'
               type='password'
+              margin='normal'
+              fullWidth
               onChange={onInputChange}
+              // onBlur={() => validateForm(values)}
               value={values.password}
               error={!!errors.password}
               helperText={errors.password}
@@ -98,6 +122,8 @@ const Signup = () => {
               name='confirmPassword'
               label='Confirm Password'
               type='password'
+              margin='normal'
+              fullWidth
               onChange={onInputChange}
               value={values.confirmPassword}
               error={!!errors.confirmPassword}
@@ -114,7 +140,7 @@ const Signup = () => {
             <Grid container>
               <Grid item xs></Grid>
               <Grid item>
-                <Link to='/signin'>
+                <Link to='/login'>
                   <MLink href='#' variant='body2'>
                     Already have an account? Sign In
                   </MLink>

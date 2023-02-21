@@ -1,6 +1,7 @@
 import { Button, Grid, Link, TextField } from '@mui/material'
 import { Box } from '@mui/system'
 import React, { useState } from 'react'
+import { login } from '../../services/auth'
 import { validateForm } from '../../utils/validations'
 
 const formIntialValues = {
@@ -22,7 +23,14 @@ const SiginInForm = () => {
     const { isValid, errors } = validateForm(form)
     setErrors(errors)
     if (isValid) {
-      //make API Call and submit form details to BE
+      const data = { ...form }
+      login(data)
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 
@@ -61,12 +69,12 @@ const SiginInForm = () => {
       </Button>
       <Grid container>
         <Grid item xs>
-          <Link href='#' variant='body2'>
-            Forgot password?
+          <Link href='/' variant='body2'>
+            Go Home
           </Link>
         </Grid>
         <Grid item>
-          <Link href='#' variant='body2'>
+          <Link href='/signup' variant='body2'>
             {"Don't have an account? Sign Up"}
           </Link>
         </Grid>

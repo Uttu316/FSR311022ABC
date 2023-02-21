@@ -17,6 +17,7 @@ class Counter extends Component {
   //   return { value: props.title ? 3 : -1 }
   // }
 
+
   componentDidMount () {
     console.log('I am mounted')
     this.setState({ showLoader: true })
@@ -44,8 +45,9 @@ class Counter extends Component {
   componentDidUpdate () {
     console.log('Updation done Successfully ')
   }
-  componentWillUnmount () {
+   componentWillUnmount () {
     console.log('I am unmounting')
+    
   }
 
   onAdd () {
