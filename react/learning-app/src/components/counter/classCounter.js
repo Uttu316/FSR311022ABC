@@ -73,7 +73,7 @@ class Counter extends Component {
         {showLoader && 'Loading...'}
         <button onClick={this.onAdd}> Add+</button>
         <button onClick={this.onMinus}> Minus-</button>
-        <XYZ value={value} />
+        {/* <XYZ value={value} /> */}
       </div>
     )
   }

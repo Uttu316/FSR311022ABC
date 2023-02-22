@@ -5,9 +5,14 @@ import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 
 const Header = () => {
   const navigate = useNavigate()
+
+  const {isLoggedIn}  = useSelector((state)=>state.auth);
+
 
   const onLogin = () => {
     navigate('/login')
@@ -20,9 +25,9 @@ const Header = () => {
             Phone Booth
           </Typography>
 
-          <Button color='inherit' onClick={onLogin}>
+         {!isLoggedIn&& <Button color='inherit' onClick={onLogin}>
             Login
-          </Button>
+          </Button>}
         </Toolbar>
       </AppBar>
     </Box>
