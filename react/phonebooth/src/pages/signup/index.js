@@ -12,6 +12,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import { TextField } from '@mui/material'
 import { signUp } from '../../services/auth'
 import * as LocalStorage from "../../utils/localstorage";
+import { useDispatch } from 'react-redux'
+import { setIsLoggedIn } from '../../redux/actions/authActions'
+import { setUserDetails } from '../../redux/actions/userActions'
 
 const initalValues = {
   email: '',
@@ -20,6 +23,7 @@ const initalValues = {
 }
 const Signup = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [values, setValues] = useState(initalValues)
   const [errors, setErrors] = useState(initalValues)
 
@@ -44,6 +48,8 @@ const Signup = () => {
       }
       signUp(data)
         .then(res => {
+          dispatch(setIsLoggedIn(true))
+          dispatch(setUserDetails(res))
           LocalStorage.setLSValue('user',res)
           navigate('/dashboard',{
             replace:true

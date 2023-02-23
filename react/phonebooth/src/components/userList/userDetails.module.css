@@ -1,0 +1,9 @@
+
+.userDetailsWrapper{
+    margin: 40px;
+}
+.userList{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}

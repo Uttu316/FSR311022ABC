@@ -1,12 +1,22 @@
-
+import * as LocalStorage from "../../utils/localstorage";
+import { authActionTypes } from "../actions/actionTypes";
 
 const intialState = {
-    isLoggedIn:false,
-}
+  isLoggedIn: Boolean(LocalStorage.getLSValue("user")),
+};
 
 
-const authReducers = (state=intialState,action)=>{
-    return state;
-}
 
-export default authReducers
+const authReducers = (state = intialState, action) => {
+  switch (action.type) {
+    case authActionTypes.SET_IS_LOGGEDIN:
+      return { ...state, isLoggedIn: action.payload }
+    case authActionTypes.LOGOUT:
+        return {...state,isLoggedIn:false} 
+    default:
+        return state     
+  }
+ 
+};
+
+export default authReducers;

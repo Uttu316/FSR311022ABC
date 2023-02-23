@@ -1,11 +1,19 @@
-
+import * as LocalStorage from "../../utils/localstorage";
+import { userActionTypes } from "../actions/actionTypes";
 
 const intialState = {
-    userDetails:null,
+    userDetails:LocalStorage.getLSValue("user")||null,
 }
 
 const userReducer = (state=intialState,action)=>{
-    return state
+    switch(action.type){
+        case userActionTypes.SET_USER_DETAILS:{
+            return {...state,userDetails:action.payload}
+        }
+        default:
+            return state
+    }
+   
 }
 
 export default userReducer;
