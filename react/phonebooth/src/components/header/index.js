@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutUser } from "../../redux/actions/authActions";
+import ContactsButton from "../ContactsButton";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const Header = () => {
             Phone Booth
           </Typography>
 
+          <ContactsButton/>
           {!isLoggedIn && (
             <Button color="inherit" onClick={onLogin}>
               Login

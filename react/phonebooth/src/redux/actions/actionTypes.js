@@ -4,7 +4,9 @@ export const authActionTypes= {
 }
 
 export const userActionTypes = {
-    SET_USER_DETAILS:'SET_USER_DETAILS'
+    SET_USER_DETAILS:'SET_USER_DETAILS',
+    CONTACT_USER:'CONTACT_USER',
+    REMOVE_USER:'REMOVE_USER'
 }
 
 
