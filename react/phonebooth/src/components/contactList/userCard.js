@@ -5,10 +5,17 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { IconButton, CardActionArea, CardActions } from "@mui/material";
 import MailButton from "../ContactsButton/mailButton";
-
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const UserCard = (props) => {
-  const { userDetails } = props;
+  const {
+    userDetails,
+    hideMailButton,
+    showDeleteButton,
+    selectUser,
+    selectedUsers,
+  } = props;
 
   const {
     avatar,
@@ -18,6 +25,18 @@ const UserCard = (props) => {
     last_name,
   } = userDetails || {};
 
+  const onSelectuser = () => {
+    if (selectedUsers[userId]) {
+      const newUsers = { ...selectedUsers };
+      delete newUsers[userId];
+      selectUser(newUsers);
+      return;
+    } else {
+      const newUsers = { ...selectedUsers };
+      newUsers[userId] = true;
+      selectUser(newUsers);
+    }
+  };
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
@@ -37,7 +56,13 @@ const UserCard = (props) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <MailButton user={userDetails}/>
+        {!hideMailButton && <MailButton user={userDetails} />}
+        {showDeleteButton && (
+          <IconButton onClick={onSelectuser}>
+            {!selectedUsers[userId]&& <DeleteOutlineIcon />}
+            {selectedUsers[userId]&& <DeleteIcon color="secondary"  />}
+          </IconButton>
+        )}
       </CardActions>
     </Card>
   );

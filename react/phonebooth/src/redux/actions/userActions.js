@@ -26,3 +26,11 @@ export const removeUser =  (user)=>{
         userId:id
     }
 }
+
+
+export const removeMultipleUsers = (ids)=>{
+    return {
+        type:userActionTypes.REMOVE_MULTIPLE_USER,
+        userIds:ids
+    }
+}

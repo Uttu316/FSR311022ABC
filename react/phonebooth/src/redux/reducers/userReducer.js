@@ -22,6 +22,10 @@ const userReducer = (state=intialState,action)=>{
             const newUsers = state.contactedUser.filter((i)=>i.id!==action.userId);
             return {...state,contactedUser:newUsers}
         }
+        case userActionTypes.REMOVE_MULTIPLE_USER:{
+            const newUsers = state.contactedUser.filter((i)=>!action.userIds[i.id]);
+            return {...state,contactedUser:newUsers}
+        }
         default:
             return state
     }
