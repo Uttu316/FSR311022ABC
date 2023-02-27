@@ -33,4 +33,7 @@ const mapStateToProps = (state) => {
     count,
   };
 };
-export default connect(mapStateToProps)(ContactsButton);
+
+const enhancedComponent = connect(mapStateToProps)(ContactsButton)
+export default enhancedComponent;
+//HOC
